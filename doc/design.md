@@ -1,3 +1,7 @@
-#Title#
+#Evil Hangman: design document#
 
-paragragh bla bla
+The following document provides an insight into the user interface of the app, as well as the underlying structure.
+
+![Alt text](MainView.jpg)
+
+## Header 2 ##
