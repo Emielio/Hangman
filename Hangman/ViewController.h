@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HangmanBrain.h"
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *guessedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (weak, nonatomic) IBOutlet UITextField *guessField;
+
+- (IBAction)checkUserInput:(UIButton *)sender;
 
 @end
 

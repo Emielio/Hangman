@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		176A40261A0D2BBF00A3E544 /* HangmanBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 176A40251A0D2BBF00A3E544 /* HangmanBrain.m */; };
 		1796219F1A0BBB1F002238AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1796219E1A0BBB1F002238AF /* main.m */; };
 		179621A21A0BBB1F002238AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621A11A0BBB1F002238AF /* AppDelegate.m */; };
 		179621A51A0BBB1F002238AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621A41A0BBB1F002238AF /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		176A40241A0D2BBF00A3E544 /* HangmanBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangmanBrain.h; sourceTree = "<group>"; };
+		176A40251A0D2BBF00A3E544 /* HangmanBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangmanBrain.m; sourceTree = "<group>"; };
 		179621991A0BBB1F002238AF /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796219D1A0BBB1F002238AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1796219E1A0BBB1F002238AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				179621A11A0BBB1F002238AF /* AppDelegate.m */,
 				179621A31A0BBB1F002238AF /* ViewController.h */,
 				179621A41A0BBB1F002238AF /* ViewController.m */,
+				176A40241A0D2BBF00A3E544 /* HangmanBrain.h */,
+				176A40251A0D2BBF00A3E544 /* HangmanBrain.m */,
 				179621A61A0BBB1F002238AF /* Main.storyboard */,
 				179621A91A0BBB1F002238AF /* Images.xcassets */,
 				179621AB1A0BBB1F002238AF /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				179621A51A0BBB1F002238AF /* ViewController.m in Sources */,
 				179621A21A0BBB1F002238AF /* AppDelegate.m in Sources */,
 				1796219F1A0BBB1F002238AF /* main.m in Sources */,
+				176A40261A0D2BBF00A3E544 /* HangmanBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +418,7 @@
 				179621BE1A0BBB1F002238AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		179621BF1A0BBB1F002238AF /* Build configuration list for PBXNativeTarget "HangmanTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				179621C11A0BBB1F002238AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
