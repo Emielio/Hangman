@@ -15,11 +15,11 @@ The first screen is the main ViewController of the application. This screen will
 NSUserDefaults is used to read the values for the keys "wordsize" and "lives". If they do not exist, they are recreated with default values for wordsize and lives. They are then saved. When settings are changed, they are also saved.
 
 ###List of classes and public methods:###
-HangmanBrain, handles the main game mechanics
+HangmanBrain, handles the main game mechanics for when a word is being guessed.
 - (BOOL)checkIfWon;
 - (void)guessLetter:(char)guess;
 
-State, saves the current state of program to disk
+State, saves the current state of program to disk.
 - (NSString *)getGuesses;
 - (void)saveGuesses(NSString *);
 
@@ -31,7 +31,7 @@ MainViewController, controls the main view of the application
 - (IBAction)checkUserInput:(UIButton *)sender;
 - (IBAction)settingsButton:(UIButton *)sender;
 
-SettingsViewController, controls the settings view of the application
+SettingsViewController, controls the settings view of the application.
 - @property (weak, nonatomic) IBOutlet UILabel *wordsizeLabel;
 - @property (weak, nonatomic) IBOutlet UISlider *wordsize;
 - @property (weak, nonatomic) IBOutlet UILabel *livesLabel;
