@@ -9,24 +9,40 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-@property (readonly, nonatomic) HangmanBrain *brain;
+@property (retain, readwrite, nonatomic) HangmanBrain *brain;
+@property (weak, readonly, nonatomic) NSUserDefaults *settings;
 @end
 
 @implementation ViewController
+@synthesize brain = _brain;
+@synthesize settings = _settings;
+
 @synthesize guessedLabel = _guessedLabel;
 @synthesize wordLabel = _wordLabel;
 @synthesize guessField = _guessField;
-@synthesize brain = _brain;
+@synthesize livesLabel = _livesLabel;
 
 - (HangmanBrain *)brain {
+    // HangmanBrain is instanciated when a new one is necessary.
     if (_brain == nil) {
-        _brain = [[HangmanBrain alloc] init];
+        int lives = (int) [self.settings integerForKey:@"lives"];
+        _brain = [[HangmanBrain alloc] initWithLives:lives];
     }
     return _brain;
 }
 
+- (NSUserDefaults *)settings {
+    _settings = [NSUserDefaults standardUserDefaults];
+    if ([_settings integerForKey:@"lives"] == 0) {
+        [_settings setInteger:7 forKey:@"lives"];
+    }
+    return _settings;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self updateLabels];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -35,31 +51,62 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSString *) updateWord:(char)guess {
-    [self.brain guessLetter:guess];
-    
-    return self.brain.currentState;
-    
-}
-
 - (IBAction)checkUserInput:(UIButton *)sender {
-    NSLog(@"Starting");
-    
+    /* 
+     * User's input (a letter) is tested in
+     * the hangmanbrain.
+     */
     if ([self.guessField.text length] != 1) {
         NSLog(@"Please enter 1 character at a time.");
         return;
     }
-    char guess = [self.guessField.text characterAtIndex:0];
+    char letter = [self.guessField.text characterAtIndex:0];
     
-    // TODO Check if length is 1
-    
-    self.guessedLabel.text = [self.guessedLabel.text stringByAppendingFormat:@"%c, ", guess];
-    
-    NSLog(@"Checking word");
-    self.wordLabel.text = [self updateWord:guess];
-    
-    
+    if ([self.brain guess:letter] == YES)
+    {
+        [self updateLabels];
+        // If the game is won, an alert message is pushed
+        if ([self.brain won])
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You've won!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+        }
+        
+    }
+    else
+    {
+        self.brain.lives--;
+        [self updateLabels];
+        
+        if ([self.brain lost])
+        {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Too bad" message:@"You have lost" delegate:self cancelButtonTitle:@"Try again" otherButtonTitles:nil];
+        [alert show];
+        }
+    }
+}
+
+- (IBAction)newGame:(UIButton *)sender {
+    [self clean];
+    [self updateLabels];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self clean];
+    [self updateLabels];
+}
+
+- (void)updateLabels {
+    self.wordLabel.text = self.brain.currentState;
+    self.livesLabel.text = [NSString stringWithFormat:@"Lives: %d", self.brain.lives];
     self.guessField.text = @"";
+    
+}
+
+- (void)clean {
+    
+    [self.brain clean];
+    self.brain = nil;
 }
 
 @end

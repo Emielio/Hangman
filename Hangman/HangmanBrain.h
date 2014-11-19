@@ -12,10 +12,16 @@
 
 @property (readonly, nonatomic) NSString *hangmanWord;
 @property (copy, readwrite, nonatomic) NSString *currentState;
-@property (copy, readonly, nonatomic) NSMutableArray *guessedLetters;
+@property (copy, readwrite, nonatomic) NSMutableArray *guessedLetters;
+@property (readwrite, nonatomic) int lives;
 
-- (BOOL)checkIfWon;
+- (HangmanBrain *)initWithLives:(int)lives;
 
-- (void)guessLetter:(char)guess;
+- (BOOL)guess:(char)letter;
 
+- (BOOL)won;
+
+- (BOOL)lost;
+
+- (void)clean;
 @end

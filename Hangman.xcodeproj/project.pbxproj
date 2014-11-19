@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171456831A1A34A20095F311 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 171456821A1A34A20095F311 /* SettingsViewController.m */; };
 		176A40261A0D2BBF00A3E544 /* HangmanBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 176A40251A0D2BBF00A3E544 /* HangmanBrain.m */; };
 		1796219F1A0BBB1F002238AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1796219E1A0BBB1F002238AF /* main.m */; };
 		179621A21A0BBB1F002238AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621A11A0BBB1F002238AF /* AppDelegate.m */; };
@@ -15,6 +16,7 @@
 		179621AA1A0BBB1F002238AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 179621A91A0BBB1F002238AF /* Images.xcassets */; };
 		179621AD1A0BBB1F002238AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179621AB1A0BBB1F002238AF /* LaunchScreen.xib */; };
 		179621B91A0BBB1F002238AF /* HangmanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621B81A0BBB1F002238AF /* HangmanTests.m */; };
+		17FF5A301A1CC37E00738B8E /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17FF5A2F1A1CC37E00738B8E /* defaults.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171456811A1A34A20095F311 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		171456821A1A34A20095F311 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		176A40241A0D2BBF00A3E544 /* HangmanBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangmanBrain.h; sourceTree = "<group>"; };
 		176A40251A0D2BBF00A3E544 /* HangmanBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangmanBrain.m; sourceTree = "<group>"; };
 		179621991A0BBB1F002238AF /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +47,7 @@
 		179621B21A0BBB1F002238AF /* HangmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HangmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		179621B71A0BBB1F002238AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		179621B81A0BBB1F002238AF /* HangmanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HangmanTests.m; sourceTree = "<group>"; };
+		17FF5A2F1A1CC37E00738B8E /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +96,8 @@
 				176A40241A0D2BBF00A3E544 /* HangmanBrain.h */,
 				176A40251A0D2BBF00A3E544 /* HangmanBrain.m */,
 				179621A61A0BBB1F002238AF /* Main.storyboard */,
+				171456811A1A34A20095F311 /* SettingsViewController.h */,
+				171456821A1A34A20095F311 /* SettingsViewController.m */,
 				179621A91A0BBB1F002238AF /* Images.xcassets */,
 				179621AB1A0BBB1F002238AF /* LaunchScreen.xib */,
 				1796219C1A0BBB1F002238AF /* Supporting Files */,
@@ -102,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				1796219D1A0BBB1F002238AF /* Info.plist */,
+				17FF5A2F1A1CC37E00738B8E /* defaults.plist */,
 				1796219E1A0BBB1F002238AF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -204,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17FF5A301A1CC37E00738B8E /* defaults.plist in Resources */,
 				179621A81A0BBB1F002238AF /* Main.storyboard in Resources */,
 				179621AD1A0BBB1F002238AF /* LaunchScreen.xib in Resources */,
 				179621AA1A0BBB1F002238AF /* Images.xcassets in Resources */,
@@ -226,6 +235,7 @@
 			files = (
 				179621A51A0BBB1F002238AF /* ViewController.m in Sources */,
 				179621A21A0BBB1F002238AF /* AppDelegate.m in Sources */,
+				171456831A1A34A20095F311 /* SettingsViewController.m in Sources */,
 				1796219F1A0BBB1F002238AF /* main.m in Sources */,
 				176A40261A0D2BBF00A3E544 /* HangmanBrain.m in Sources */,
 			);
