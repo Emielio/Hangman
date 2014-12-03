@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Hangman
+
+  Created by Emiel on 11/26/14.
+  Copyright (c) 2014 mprog. All rights reserved.
+  
+  Example: "KEY" = "CONTENT";
+*/
+
+"alert_title_game_won" = "Congratulations";
+"alert_message_game_won" = "You were right!, your score is %i";
+"alert_buttonTitle_game_won" = "Cancel";
+"alert_buttonTitle_enter_score" = "Enter to High Score";
+"alert_title_game_lost" = "Too bad";
+"alert_message_game_lost" = "You've lost, the word was %@";
+"alert_buttonTitle_game_lost" = "Try again";

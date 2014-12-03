@@ -9,16 +9,21 @@
 #import <UIKit/UIKit.h>
 
 #import "HangmanBrain.h"
+#import "HighScoreViewController.h"
 
-@interface ViewController : UIViewController <UIAlertViewDelegate>
+@interface ViewController : UIViewController <UIAlertViewDelegate, UIKeyInput>
 
 @property (weak, nonatomic) IBOutlet UILabel *guessedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *livesLabel;
-@property (weak, nonatomic) IBOutlet UITextField *guessField;
+@property (weak, nonatomic) IBOutlet UILabel *inputLabel;
+@property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *instructionArrow;
 
-- (IBAction)checkUserInput:(UIButton *)sender;
+- (void)checkUserInput;
+
 - (IBAction)newGame:(UIButton *)sender;
+- (IBAction)doneEditing:(id)sender;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 

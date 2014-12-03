@@ -10,18 +10,22 @@
 
 @interface HangmanBrain : NSObject
 
-@property (readonly, nonatomic) NSString *hangmanWord;
-@property (copy, readwrite, nonatomic) NSString *currentState;
-@property (copy, readwrite, nonatomic) NSMutableArray *guessedLetters;
-@property (readwrite, nonatomic) int lives;
+@property (copy, readwrite, nonatomic) NSMutableArray *currentState;
+@property (retain, readwrite, nonatomic) NSMutableDictionary *areLettersInWord;
+@property (retain, readwrite, nonatomic) NSArray *possibleWords;
+@property (assign, readwrite, nonatomic) int score;
+@property (assign, readwrite, nonatomic) int lives;
 
-- (HangmanBrain *)initWithLives:(int)lives;
 
-- (BOOL)guess:(char)letter;
+- (HangmanBrain *)initWithLives:(int)lives andWordsize:(int)wordsize;
+
+- (BOOL)guess:(NSString *)letter;
 
 - (BOOL)won;
 
 - (BOOL)lost;
+
+- (void)memoryWarning;
 
 - (void)clean;
 @end

@@ -11,12 +11,14 @@
 @interface SettingsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UISlider *livesSlider;
-@property (weak, nonatomic) NSNumber *livesSetting;
-@property (weak, nonatomic) NSNumber *wordsizeSetting;
 @property (weak, nonatomic) IBOutlet UILabel *livesLabel;
+@property (weak, nonatomic) IBOutlet UISlider *wordsizeSlider;
+@property (weak, nonatomic) IBOutlet UILabel *wordsizeLabel;
+
 @property (weak, nonatomic) NSUserDefaults *settings;
 
 - (IBAction)livesChanged:(id)sender;
+- (IBAction)wordsizeChanged:(id)sender;
 - (IBAction)goBack:(id)sender;
 
 @end
