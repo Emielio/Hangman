@@ -7,7 +7,6 @@
   
   Example: "KEY" = "CONTENT";
 */
-
 "alert_title_game_won" = "Congratulations";
 "alert_message_game_won" = "You were right!, your score is %i";
 "alert_buttonTitle_game_won" = "Cancel";
@@ -15,3 +14,5 @@
 "alert_title_game_lost" = "Too bad";
 "alert_message_game_lost" = "You've lost, the word was %@";
 "alert_buttonTitle_game_lost" = "Try again";
+
+"instruction_game_launch" = "Use the keyboard to guess a letter";

@@ -9,23 +9,25 @@
 #import <Foundation/Foundation.h>
 
 @interface HangmanBrain : NSObject
-
 @property (copy, readwrite, nonatomic) NSMutableArray *currentState;
 @property (retain, readwrite, nonatomic) NSMutableDictionary *areLettersInWord;
-@property (retain, readwrite, nonatomic) NSArray *possibleWords;
+
 @property (assign, readwrite, nonatomic) int score;
 @property (assign, readwrite, nonatomic) int lives;
-
+@property (assign, readonly, nonatomic) double progress;
 
 - (HangmanBrain *)initWithLives:(int)lives andWordsize:(int)wordsize;
 
-- (BOOL)guess:(NSString *)letter;
+- (void)guess:(NSString *)letter;
 
 - (BOOL)won;
 
 - (BOOL)lost;
 
+- (NSString *)answer;
+
 - (void)memoryWarning;
 
 - (void)clean;
+
 @end

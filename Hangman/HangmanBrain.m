@@ -9,7 +9,10 @@
 #import "HangmanBrain.h"
 @interface HangmanBrain ()
 @property (retain, readwrite, nonatomic) NSArray *wordlist;
+@property (retain, readwrite, nonatomic) NSArray *possibleWords;
+
 @property (assign, readwrite, nonatomic) int wordsize;
+@property (assign, readwrite, nonatomic) int initialLives;
 @end
 
 
@@ -21,6 +24,7 @@
 @synthesize wordlist = _wordlist;
 @synthesize possibleWords = _possibleWords;
 @synthesize score = _score;
+@synthesize progress = _progress;
 
 
 #pragma mark - init
@@ -31,12 +35,13 @@
     self = [super init];
     self.wordsize = wordsize;
     self.lives = lives;
+    self.initialLives = lives;
     self.score = 100 - lives;
     
     return self;
 }
 
-#pragma mark - Getters
+#pragma mark - Getters/Setters
 - (NSArray *)wordlist {
     /*
      * Returns a language dictionary, based on the word.plist file
@@ -49,15 +54,16 @@
 }
 
 - (NSArray *)possibleWords {
+    /*
+     * Returns an array with the currently still possible words.
+     */
     if (_possibleWords == nil)
     {
         NSMutableArray *storage = [NSMutableArray array];
         for (NSString *word in self.wordlist)
         {
             if (word.length == self.wordsize)
-            {
                 [storage addObject:word];
-            }
         }
         _possibleWords = storage;
     }
@@ -70,11 +76,10 @@
      */
     if (_currentState == nil)
     {
-        _currentState = [NSMutableArray array];
+        _currentState = [NSMutableArray arrayWithCapacity:self.wordsize];
         
-        for (int i = 0, n = self.wordsize; i < n; i++) {
+        for (int i = 0, n = self.wordsize; i < n; i++)
             [_currentState addObject:@""];
-        }
     }
     return _currentState;
 }
@@ -83,56 +88,59 @@
     /*
      * guessedLetters will contain all characters that have been guessed
      */
-    if (_areLettersInWord == nil) {
+    if (_areLettersInWord == nil)
         _areLettersInWord = [NSMutableDictionary dictionaryWithCapacity:26];
-    }
+
     return _areLettersInWord;
 }
 
+- (void)setLives:(int)lives {
+    /*
+     * Updates progress if lives is set.
+     */
+    _lives = lives;
+    
+    _progress = 1.0 - (double) lives / self.initialLives;
+}
+
 #pragma mark - Game Core
-- (BOOL)guess:(NSString *)letter {
+- (void)guess:(NSString *)letter {
     /*
      * Guess whether a letter is in the secret word.
      */
-    BOOL isLetterInWord;
-    
     NSMutableDictionary *containers = [NSMutableDictionary dictionary];
     
-    for (NSString *word in self.possibleWords) {
-        
+    for (NSString *word in self.possibleWords)
+    {
         NSString *key = [self hash:letter inString:word];
         
-        if ([containers objectForKey:key] == nil) {
-            [containers setObject:[NSMutableArray array] forKey:key];
-        }
+        if ([containers objectForKey:key] == nil)
+            containers[key] = [NSMutableArray array];
         
-        [[containers objectForKey:key] addObject:word];
+        [containers[key] addObject:word];
     }
     
-    NSArray *largestContainer = @[];
+    NSArray *largestContainer;
     NSString *correspondingKey;
 
     for (NSString *key in containers) {
-        NSArray *temp = [containers objectForKey:key];
-        
-        if (temp.count > largestContainer.count) {
+        if ([containers[key] count] > largestContainer.count) {
+            NSArray *temp = containers[key];
             largestContainer = temp;
             correspondingKey = key;
         }
     }
     
     self.possibleWords = largestContainer;
-    NSLog(@"Container chosen: %@", largestContainer);
+    NSLog(@"%@", self.possibleWords);
     
     if ([correspondingKey isEqualToString:@""]) {
         [self.areLettersInWord setObject:[NSNumber numberWithBool:NO] forKey:letter];
         self.lives--;
         self.score--;
-        isLetterInWord = NO;
     }
     else {
         [self.areLettersInWord setObject:[NSNumber numberWithBool:YES] forKey:letter];
-        isLetterInWord = YES;
     }
     
     NSArray *indices = [correspondingKey componentsSeparatedByString:@","];
@@ -145,9 +153,6 @@
         }
         [self.currentState replaceObjectAtIndex:[index integerValue] withObject:letter];
     }
-    
-    
-    return isLetterInWord;
 }
 
 - (NSString *)hash:(NSString *) letter inString:(NSString *)string {
@@ -193,6 +198,10 @@
     {
         return NO;
     }
+}
+
+- (NSString *)answer {
+    return self.possibleWords[0];
 }
 
 - (void)memoryWarning {

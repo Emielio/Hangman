@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 @property (retain, readwrite, nonatomic) HangmanBrain *brain;
 @property (weak, readonly, nonatomic) NSUserDefaults *userDefaults;
 @end
 
-@implementation ViewController
+@implementation MainViewController
 @synthesize brain = _brain;
 @synthesize userDefaults = _userDefaults;
 
@@ -23,6 +23,7 @@
 @synthesize inputLabel = _inputLabel;
 @synthesize instructionLabel = _instructionLabel;
 @synthesize instructionArrow = _instructionArrow;
+@synthesize gallowImage = _gallowImage;
 
 #pragma mark - Getters
 - (HangmanBrain *)brain {
@@ -52,7 +53,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // [self.guessField setDelegate:self];
     // Update labels
     [self updateLabels];
 }
@@ -63,7 +63,17 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+    [self.brain memoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier  isEqualToString:@"pauseSegue"]) {
+        PauseViewController *pauseViewController = segue.destinationViewController;
+        [pauseViewController setDelegate:self];
+    }
+    
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -74,17 +84,6 @@
     return YES;
 }
 
-#pragma mark - IBActions
-
-- (IBAction)doneEditing:(id)sender {
-    [self checkUserInput];
-}
-
-- (IBAction)newGame:(UIButton *)sender {
-    [self clean];
-    [self updateLabels];
-}
-
 
 #pragma mark - Game Handling
 - (void)checkUserInput {
@@ -92,12 +91,12 @@
      * User's input (a letter) is tested in
      * the hangmanbrain.
      */
-    if (self.inputLabel.text.length != 1) {
-        return;
-    }
     
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{self.instructionLabel.alpha = 0; self.instructionArrow.alpha = 0;}
-                     completion:^(BOOL finished){self.instructionLabel.hidden = YES; self.instructionArrow.hidden = YES;}];
+    if (self.instructionLabel.hidden == NO) {
+        // Animation which hides the instruction label and image.
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{self.instructionLabel.alpha = 0; self.instructionArrow.alpha = 0;}
+                         completion:^(BOOL finished){self.instructionLabel.hidden = YES; self.instructionArrow.hidden = YES;}];
+    }
     
     NSString *letter = [self.inputLabel.text substringWithRange:NSMakeRange(0, 1)];
     
@@ -107,7 +106,9 @@
         return;
     }
     
-    BOOL letterInWord = [self.brain guess:letter];
+    [self.brain guess:letter];
+    
+    [self updateGallow];
     
     [self updateLabels];
     
@@ -128,7 +129,7 @@
     NSString *messageKey = @"alert_message_game_lost";
     NSString *buttonTitleKey = @"alert_buttonTitle_game_lost";
     
-    NSString *finalWord = self.brain.possibleWords[0];
+    NSString *finalWord = [self.brain answer];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(titleKey, nil) message:[NSString stringWithFormat:NSLocalizedString(messageKey, nil),finalWord] delegate:self cancelButtonTitle:NSLocalizedString(buttonTitleKey, nil) otherButtonTitles:nil];
     
@@ -172,20 +173,28 @@
     self.wordLabel.text = wordLabelText;
     
     NSMutableString *wrongLetters = [NSMutableString string];
-    if (self.brain.areLettersInWord.count > 0)
-        [wrongLetters appendString:@"Guessed: "];
-    
-    for (NSString *key in self.brain.areLettersInWord) {
-        if ([self.brain.areLettersInWord[key] boolValue] == NO) {
-            [wrongLetters appendFormat:@"%@ ", key];
-        }
+    for (char c = 'A'; c <= 'Z'; c++) {
+        NSString *letter = [NSString stringWithFormat:@"%c", c];
+        
+        if (self.brain.areLettersInWord[letter] != nil)
+            if ([self.brain.areLettersInWord[letter] boolValue] == NO)
+                [wrongLetters appendFormat:@"%c ", c];
     }
+    
+    self.instructionLabel.text = NSLocalizedString(@"instruction_game_launch", nil);
     
     self.guessedLabel.text = wrongLetters;
     
     self.livesLabel.text = [NSString stringWithFormat:@"Lives: %d", self.brain.lives];
 
     self.inputLabel.text = @"";
+}
+
+
+
+- (void)updateGallow {
+    NSString *imageName = [NSString stringWithFormat:@"gallow%i.png", (int) (self.brain.progress * 13 + 0.5)];
+    self.gallowImage.image = [UIImage imageNamed:imageName];
 }
 
 - (void)clean
@@ -195,8 +204,8 @@
 }
 
 - (void)enterHighScore:(int)score withName: (NSString *)name {
-    if (name.length > 10) {
-        name = [name substringToIndex:10];
+    if (name.length > 12) {
+        name = [name substringToIndex:12];
     }
     
     
@@ -223,20 +232,26 @@
     [self.userDefaults synchronize];
 }
 
+#pragma mark - PauseControllerDelegate Protocol implementation
+- (void)newGame {
+    [self clean];
+    [self updateGallow];
+    [self updateLabels];
+}
+
 #pragma mark - UIAlertViewDelegate Protocol implementation
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [[alertView textFieldAtIndex:0] resignFirstResponder];
-    
     if (buttonIndex == 1) {
         [self enterHighScore: self.brain.score withName:[alertView textFieldAtIndex:0].text];
         
         [self performSegueWithIdentifier:@"highScoreSegue" sender:self];
     }
     else {
+        [[alertView textFieldAtIndex:0] resignFirstResponder];
         [self becomeFirstResponder];
     }
-    
     [self clean];
+    [self updateGallow];
     [self updateLabels];
 
 }
@@ -245,7 +260,12 @@
 #pragma mark - UIKeyInput Protocol implementation
 
 - (BOOL)hasText {
-    return NO;
+    if ([self.inputLabel.text isEqualToString:@""]) {
+        return NO;
+    }
+    else {
+        return YES;
+    }
 }
 
 - (void)insertText:(NSString *)text {
@@ -265,11 +285,15 @@
 - (void)deleteBackward {
     self.inputLabel.text = @"";
 }
-    
+
 #pragma mark - UIKeyboard Customization
 
+- (UIKeyboardType)keyboardType {
+    return UIKeyboardTypeASCIICapable;
+}
+
 - (UIReturnKeyType)returnKeyType {
-    return UIReturnKeyDone;
+    return UIReturnKeyGo;
 }
 
 - (UITextSpellCheckingType)spellCheckingType {
@@ -282,6 +306,10 @@
 
 - (UITextAutocorrectionType)autocorrectionType {
     return UITextAutocorrectionTypeNo;
+}
+
+- (BOOL)enablesReturnKeyAutomatically {
+    return YES;
 }
 
 @end

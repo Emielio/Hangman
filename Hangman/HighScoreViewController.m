@@ -16,6 +16,7 @@
 @synthesize highScoreLabel = _highScoreLabel;
 @synthesize highNameLabel = _highNameLabel;
 
+#pragma mark - UIViewController overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -23,6 +24,18 @@
     
     [self printHighScore:highscore];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+
+#pragma mark - High Score core methods
 
 - (void)printHighScore:(NSArray *)highscore {
     NSMutableString *scoreOutput = [NSMutableString string];
@@ -37,24 +50,7 @@
     self.highScoreLabel.text = scoreOutput;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark - IBActions
 
 - (IBAction)donePressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -9,17 +9,17 @@
 /* Begin PBXBuildFile section */
 		171456831A1A34A20095F311 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 171456821A1A34A20095F311 /* SettingsViewController.m */; };
 		176A40261A0D2BBF00A3E544 /* HangmanBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 176A40251A0D2BBF00A3E544 /* HangmanBrain.m */; };
+		17759DFE1A2FA8BB004D61F3 /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17759DFD1A2FA8BB004D61F3 /* PauseViewController.m */; };
 		178A9BFF1A2625F000DA310C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 178A9BFE1A2625F000DA310C /* Localizable.strings */; };
 		179182841A25D04700DBBD58 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 179182831A25D04700DBBD58 /* words.plist */; };
 		1796219F1A0BBB1F002238AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1796219E1A0BBB1F002238AF /* main.m */; };
 		179621A21A0BBB1F002238AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621A11A0BBB1F002238AF /* AppDelegate.m */; };
-		179621A51A0BBB1F002238AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621A41A0BBB1F002238AF /* ViewController.m */; };
+		179621A51A0BBB1F002238AF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621A41A0BBB1F002238AF /* MainViewController.m */; };
 		179621A81A0BBB1F002238AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 179621A61A0BBB1F002238AF /* Main.storyboard */; };
 		179621AA1A0BBB1F002238AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 179621A91A0BBB1F002238AF /* Images.xcassets */; };
 		179621AD1A0BBB1F002238AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179621AB1A0BBB1F002238AF /* LaunchScreen.xib */; };
 		179621B91A0BBB1F002238AF /* HangmanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621B81A0BBB1F002238AF /* HangmanTests.m */; };
 		17A7750F1A2E775400E8DE4F /* blackboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A7750E1A2E775400E8DE4F /* blackboard.png */; };
-		17A775111A2E783600E8DE4F /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A775101A2E783600E8DE4F /* arrow.png */; };
 		17DC6D251A2B8EDA001EC80D /* HighScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DC6D241A2B8EDA001EC80D /* HighScoreViewController.m */; };
 		17FF5A301A1CC37E00738B8E /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17FF5A2F1A1CC37E00738B8E /* defaults.plist */; };
 /* End PBXBuildFile section */
@@ -39,6 +39,8 @@
 		171456821A1A34A20095F311 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		176A40241A0D2BBF00A3E544 /* HangmanBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangmanBrain.h; sourceTree = "<group>"; };
 		176A40251A0D2BBF00A3E544 /* HangmanBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangmanBrain.m; sourceTree = "<group>"; };
+		17759DFC1A2FA8BB004D61F3 /* PauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseViewController.h; sourceTree = "<group>"; };
+		17759DFD1A2FA8BB004D61F3 /* PauseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseViewController.m; sourceTree = "<group>"; };
 		178A9BFE1A2625F000DA310C /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		179182831A25D04700DBBD58 /* words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = words.plist; sourceTree = "<group>"; };
 		179621991A0BBB1F002238AF /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,8 +48,8 @@
 		1796219E1A0BBB1F002238AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		179621A01A0BBB1F002238AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		179621A11A0BBB1F002238AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		179621A31A0BBB1F002238AF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		179621A41A0BBB1F002238AF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		179621A31A0BBB1F002238AF /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		179621A41A0BBB1F002238AF /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		179621A71A0BBB1F002238AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		179621A91A0BBB1F002238AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		179621AC1A0BBB1F002238AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -55,7 +57,6 @@
 		179621B71A0BBB1F002238AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		179621B81A0BBB1F002238AF /* HangmanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HangmanTests.m; sourceTree = "<group>"; };
 		17A7750E1A2E775400E8DE4F /* blackboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackboard.png; sourceTree = "<group>"; };
-		17A775101A2E783600E8DE4F /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		17DC6D231A2B8EDA001EC80D /* HighScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreViewController.h; sourceTree = "<group>"; };
 		17DC6D241A2B8EDA001EC80D /* HighScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreViewController.m; sourceTree = "<group>"; };
 		17FF5A2F1A1CC37E00738B8E /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -79,6 +80,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17759DFF1A2FD832004D61F3 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				176A40241A0D2BBF00A3E544 /* HangmanBrain.h */,
+				176A40251A0D2BBF00A3E544 /* HangmanBrain.m */,
+			);
+			name = Modals;
+			sourceTree = "<group>";
+		};
+		178DBBE71A2FF0B5006F1016 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				179621A31A0BBB1F002238AF /* MainViewController.h */,
+				17DC6D231A2B8EDA001EC80D /* HighScoreViewController.h */,
+				17DC6D241A2B8EDA001EC80D /* HighScoreViewController.m */,
+				171456811A1A34A20095F311 /* SettingsViewController.h */,
+				171456821A1A34A20095F311 /* SettingsViewController.m */,
+				179621A41A0BBB1F002238AF /* MainViewController.m */,
+				17759DFC1A2FA8BB004D61F3 /* PauseViewController.h */,
+				17759DFD1A2FA8BB004D61F3 /* PauseViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		179621901A0BBB1F002238AF = {
 			isa = PBXGroup;
 			children = (
@@ -100,18 +125,10 @@
 		1796219B1A0BBB1F002238AF /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
-				179621A01A0BBB1F002238AF /* AppDelegate.h */,
-				179621A11A0BBB1F002238AF /* AppDelegate.m */,
-				179621A31A0BBB1F002238AF /* ViewController.h */,
-				179621A41A0BBB1F002238AF /* ViewController.m */,
-				176A40241A0D2BBF00A3E544 /* HangmanBrain.h */,
-				176A40251A0D2BBF00A3E544 /* HangmanBrain.m */,
+				178DBBE71A2FF0B5006F1016 /* ViewControllers */,
+				17759DFF1A2FD832004D61F3 /* Modals */,
 				17A775121A2F321A00E8DE4F /* images */,
 				179621A61A0BBB1F002238AF /* Main.storyboard */,
-				17DC6D231A2B8EDA001EC80D /* HighScoreViewController.h */,
-				17DC6D241A2B8EDA001EC80D /* HighScoreViewController.m */,
-				171456811A1A34A20095F311 /* SettingsViewController.h */,
-				171456821A1A34A20095F311 /* SettingsViewController.m */,
 				179621A91A0BBB1F002238AF /* Images.xcassets */,
 				179621AB1A0BBB1F002238AF /* LaunchScreen.xib */,
 				1796219C1A0BBB1F002238AF /* Supporting Files */,
@@ -122,6 +139,8 @@
 		1796219C1A0BBB1F002238AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				179621A01A0BBB1F002238AF /* AppDelegate.h */,
+				179621A11A0BBB1F002238AF /* AppDelegate.m */,
 				178A9BFE1A2625F000DA310C /* Localizable.strings */,
 				1796219D1A0BBB1F002238AF /* Info.plist */,
 				179182831A25D04700DBBD58 /* words.plist */,
@@ -151,7 +170,6 @@
 		17A775121A2F321A00E8DE4F /* images */ = {
 			isa = PBXGroup;
 			children = (
-				17A775101A2E783600E8DE4F /* arrow.png */,
 				17A7750E1A2E775400E8DE4F /* blackboard.png */,
 			);
 			name = images;
@@ -244,7 +262,6 @@
 				179621AA1A0BBB1F002238AF /* Images.xcassets in Resources */,
 				17A7750F1A2E775400E8DE4F /* blackboard.png in Resources */,
 				179182841A25D04700DBBD58 /* words.plist in Resources */,
-				17A775111A2E783600E8DE4F /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,12 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				179621A51A0BBB1F002238AF /* ViewController.m in Sources */,
+				179621A51A0BBB1F002238AF /* MainViewController.m in Sources */,
 				179621A21A0BBB1F002238AF /* AppDelegate.m in Sources */,
 				171456831A1A34A20095F311 /* SettingsViewController.m in Sources */,
 				1796219F1A0BBB1F002238AF /* main.m in Sources */,
 				176A40261A0D2BBF00A3E544 /* HangmanBrain.m in Sources */,
 				17DC6D251A2B8EDA001EC80D /* HighScoreViewController.m in Sources */,
+				17759DFE1A2FA8BB004D61F3 /* PauseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
