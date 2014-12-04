@@ -132,7 +132,6 @@
     }
     
     self.possibleWords = largestContainer;
-    NSLog(@"%@", self.possibleWords);
     
     if ([correspondingKey isEqualToString:@""]) {
         [self.areLettersInWord setObject:[NSNumber numberWithBool:NO] forKey:letter];

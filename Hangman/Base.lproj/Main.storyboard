@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="3ip-BY-p2c">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="3ip-BY-p2c">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0T-X5-86X">
@@ -148,7 +148,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="kvN-bE-Ave">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="kvN-bE-Ave">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppr-0W-Jea">
@@ -237,7 +237,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="iCu-qm-ZQJ">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="iCu-qm-ZQJ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Scores" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxM-4v-gAt">
@@ -307,14 +307,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard.png" translatesAutoresizingMaskIntoConstraints="NO" id="piW-wc-Edv">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="piW-wc-Edv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="HYN-97-bLY">
-                                <rect key="frame" x="148" y="230" width="304" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Gvy-fo-5Pv"/>
-                                </constraints>
+                                <rect key="frame" x="98" y="229" width="404" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.28754340277777779" green="0.28754340277777779" blue="0.28754340277777779" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="thumbTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -333,24 +330,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordsizeLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja4-d7-Auz">
-                                <rect key="frame" x="245" y="290" width="111" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="233" y="289" width="136" height="22"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="16" minValue="1" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="WwJ-iI-R90">
-                                <rect key="frame" x="149" y="321" width="304" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="LIR-3d-VIC"/>
-                                </constraints>
+                                <rect key="frame" x="99" y="321" width="404" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.28754340280000001" green="0.28754340280000001" blue="0.28754340280000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="wordsizeChanged:" destination="wUI-ow-uQg" eventType="valueChanged" id="y3c-bv-hqe"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="livesLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlI-Hd-g4k">
-                                <rect key="frame" x="261" y="201" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="251" y="199" width="96" height="22"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -359,6 +353,7 @@
                         <constraints>
                             <constraint firstItem="qzb-Yd-VCr" firstAttribute="top" secondItem="YLr-jh-Wbe" secondAttribute="bottom" constant="8" id="1x4-JB-Eet"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="leading" secondItem="MSa-Bo-gR9" secondAttribute="leading" id="859-XB-5L3"/>
+                            <constraint firstItem="HYN-97-bLY" firstAttribute="width" secondItem="piW-wc-Edv" secondAttribute="width" multiplier="2/3" id="BTx-Zq-DXM"/>
                             <constraint firstItem="HYN-97-bLY" firstAttribute="top" secondItem="hlI-Hd-g4k" secondAttribute="bottom" constant="8" id="DsM-AQ-qKh"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="centerY" secondItem="Ja4-d7-Auz" secondAttribute="centerY" id="FZx-jr-LP1"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="centerX" secondItem="HYN-97-bLY" secondAttribute="centerX" id="HHh-eF-QfN"/>
@@ -369,6 +364,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="qzb-Yd-VCr" secondAttribute="trailing" id="QaK-u5-zrU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qzb-Yd-VCr" secondAttribute="trailing" id="VYs-BQ-OGk"/>
                             <constraint firstAttribute="centerX" secondItem="Ja4-d7-Auz" secondAttribute="centerX" constant="-0.5" id="XhJ-pr-iHZ"/>
+                            <constraint firstItem="WwJ-iI-R90" firstAttribute="width" secondItem="piW-wc-Edv" secondAttribute="width" multiplier="2/3" id="goQ-bU-JA8"/>
                             <constraint firstItem="qzb-Yd-VCr" firstAttribute="top" secondItem="YLr-jh-Wbe" secondAttribute="bottom" id="ixS-mb-6kL"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="bottom" secondItem="BVi-0C-hVn" secondAttribute="top" id="otg-Sp-GmK"/>
                             <constraint firstAttribute="centerY" secondItem="Ja4-d7-Auz" secondAttribute="centerY" id="qyr-mP-fJZ"/>
@@ -399,7 +395,7 @@
     </scenes>
     <resources>
         <image name="arrow" width="22" height="22"/>
-        <image name="blackboard.png" width="1698" height="1131"/>
+        <image name="blackboard" width="849" height="565"/>
         <image name="button_bg" width="119" height="32"/>
         <image name="pause_button" width="25" height="25"/>
     </resources>

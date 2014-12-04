@@ -19,7 +19,6 @@
 		179621AA1A0BBB1F002238AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 179621A91A0BBB1F002238AF /* Images.xcassets */; };
 		179621AD1A0BBB1F002238AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179621AB1A0BBB1F002238AF /* LaunchScreen.xib */; };
 		179621B91A0BBB1F002238AF /* HangmanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 179621B81A0BBB1F002238AF /* HangmanTests.m */; };
-		17A7750F1A2E775400E8DE4F /* blackboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17A7750E1A2E775400E8DE4F /* blackboard.png */; };
 		17DC6D251A2B8EDA001EC80D /* HighScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DC6D241A2B8EDA001EC80D /* HighScoreViewController.m */; };
 		17FF5A301A1CC37E00738B8E /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17FF5A2F1A1CC37E00738B8E /* defaults.plist */; };
 /* End PBXBuildFile section */
@@ -56,7 +55,6 @@
 		179621B21A0BBB1F002238AF /* HangmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HangmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		179621B71A0BBB1F002238AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		179621B81A0BBB1F002238AF /* HangmanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HangmanTests.m; sourceTree = "<group>"; };
-		17A7750E1A2E775400E8DE4F /* blackboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackboard.png; sourceTree = "<group>"; };
 		17DC6D231A2B8EDA001EC80D /* HighScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreViewController.h; sourceTree = "<group>"; };
 		17DC6D241A2B8EDA001EC80D /* HighScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreViewController.m; sourceTree = "<group>"; };
 		17FF5A2F1A1CC37E00738B8E /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -93,11 +91,11 @@
 			isa = PBXGroup;
 			children = (
 				179621A31A0BBB1F002238AF /* MainViewController.h */,
+				179621A41A0BBB1F002238AF /* MainViewController.m */,
 				17DC6D231A2B8EDA001EC80D /* HighScoreViewController.h */,
 				17DC6D241A2B8EDA001EC80D /* HighScoreViewController.m */,
 				171456811A1A34A20095F311 /* SettingsViewController.h */,
 				171456821A1A34A20095F311 /* SettingsViewController.m */,
-				179621A41A0BBB1F002238AF /* MainViewController.m */,
 				17759DFC1A2FA8BB004D61F3 /* PauseViewController.h */,
 				17759DFD1A2FA8BB004D61F3 /* PauseViewController.m */,
 			);
@@ -127,7 +125,6 @@
 			children = (
 				178DBBE71A2FF0B5006F1016 /* ViewControllers */,
 				17759DFF1A2FD832004D61F3 /* Modals */,
-				17A775121A2F321A00E8DE4F /* images */,
 				179621A61A0BBB1F002238AF /* Main.storyboard */,
 				179621A91A0BBB1F002238AF /* Images.xcassets */,
 				179621AB1A0BBB1F002238AF /* LaunchScreen.xib */,
@@ -165,14 +162,6 @@
 				179621B71A0BBB1F002238AF /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		17A775121A2F321A00E8DE4F /* images */ = {
-			isa = PBXGroup;
-			children = (
-				17A7750E1A2E775400E8DE4F /* blackboard.png */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +249,6 @@
 				179621A81A0BBB1F002238AF /* Main.storyboard in Resources */,
 				179621AD1A0BBB1F002238AF /* LaunchScreen.xib in Resources */,
 				179621AA1A0BBB1F002238AF /* Images.xcassets in Resources */,
-				17A7750F1A2E775400E8DE4F /* blackboard.png in Resources */,
 				179182841A25D04700DBBD58 /* words.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
