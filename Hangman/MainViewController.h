@@ -12,7 +12,8 @@
 #import "PauseViewController.h"
 #import "HighScoreModel.h"
 
-@interface MainViewController : UIViewController <UIAlertViewDelegate, UIKeyInput, PauseControllerDelegate>
+@interface MainViewController : UIViewController <UIAlertViewDelegate, UIKeyInput, UITextInputTraits
+, PauseControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *guessedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
