@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DictionaryModel.h"
 
 @interface HangmanBrain : NSObject
 @property (copy, readwrite, nonatomic) NSMutableArray *currentState;

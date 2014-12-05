@@ -48,6 +48,10 @@
     [self dismiss];
 }
 
+- (IBAction)backgroundPressed:(id)sender {
+    [self dismiss];
+}
+
 - (void)dismiss {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

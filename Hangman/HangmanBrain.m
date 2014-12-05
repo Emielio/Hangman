@@ -8,7 +8,8 @@
 
 #import "HangmanBrain.h"
 @interface HangmanBrain ()
-@property (retain, readwrite, nonatomic) NSArray *wordlist;
+@property (retain, readwrite, nonatomic) DictionaryModel *dictionaryModel;
+
 @property (retain, readwrite, nonatomic) NSArray *possibleWords;
 
 @property (assign, readwrite, nonatomic) int wordsize;
@@ -17,11 +18,11 @@
 
 
 @implementation HangmanBrain
+@synthesize dictionaryModel = _dictionaryModel;
 @synthesize currentState = _currentState;
 @synthesize areLettersInWord = _areLettersInWord;
 @synthesize lives = _lives;
 @synthesize wordsize = _wordsize;
-@synthesize wordlist = _wordlist;
 @synthesize possibleWords = _possibleWords;
 @synthesize score = _score;
 @synthesize progress = _progress;
@@ -38,20 +39,19 @@
     self.initialLives = lives;
     self.score = 100 - lives;
     
+    [self.dictionaryModel loadDictionary];
+    
     return self;
 }
 
 #pragma mark - Getters/Setters
-- (NSArray *)wordlist {
-    /*
-     * Returns a language dictionary, based on the word.plist file
-     */
-    if (_wordlist == nil) {
-        NSString *path = [[NSBundle mainBundle]pathForResource:@"words" ofType:@"plist"];
-        _wordlist = [NSArray arrayWithContentsOfFile:path];
+- (DictionaryModel *)dictionaryModel {
+    if (_dictionaryModel == nil) {
+        _dictionaryModel = [[DictionaryModel alloc] init];
     }
-    return _wordlist;
+    return _dictionaryModel;
 }
+
 
 - (NSArray *)possibleWords {
     /*
@@ -60,11 +60,15 @@
     if (_possibleWords == nil)
     {
         NSMutableArray *storage = [NSMutableArray array];
-        for (NSString *word in self.wordlist)
+        for (NSString *word in self.dictionaryModel.wordlist)
         {
             if (word.length == self.wordsize)
                 [storage addObject:word];
         }
+        
+        if (storage.count < 200)
+            self.score -= 10;
+
         _possibleWords = storage;
     }
     return _possibleWords;
@@ -204,7 +208,8 @@
 }
 
 - (void)memoryWarning {
-    self.wordlist = nil;
+    [self.dictionaryModel clean];
+    self.dictionaryModel = nil;
 }
 
 - (void)clean
@@ -212,8 +217,12 @@
     /*
      * Detroys all objects
      */
+    [self.dictionaryModel clean];
+    self.dictionaryModel = nil;
+    
     self.currentState = nil;
     self.areLettersInWord = nil;
+    self.possibleWords = nil;
 }
 
 @end

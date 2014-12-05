@@ -23,24 +23,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="3ip-BY-p2c">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0T-X5-86X">
-                                <rect key="frame" x="16" y="70" width="568" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0T-X5-86X">
+                                <rect key="frame" x="16" y="75" width="568" height="23"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-lS-U3c">
-                                <rect key="frame" x="559" y="30" width="25" height="25"/>
-                                <state key="normal" image="pause_button">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Vh7-7a-HaO" kind="show" identifier="pauseSegue" id="fS9-l8-kKB"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inputLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WU-Gn-VAz">
-                                <rect key="frame" x="244" y="178" width="113" height="30"/>
+                                <rect key="frame" x="244" y="183" width="113" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="HRT-Im-UCk"/>
                                 </constraints>
@@ -58,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="guessedLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47s-ja-vYe">
-                                <rect key="frame" x="16" y="108" width="568" height="50"/>
+                                <rect key="frame" x="16" y="113" width="568" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="B0R-sl-H0k"/>
                                     <constraint firstAttribute="height" constant="50" id="Wd2-MZ-c18"/>
@@ -72,18 +62,28 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4EF-KV-RRW">
-                                <rect key="frame" x="16" y="166" width="264" height="209"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="4EF-KV-RRW" secondAttribute="height" multiplier="455:360" id="Hfg-fm-yTx"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="instructionLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewT-7W-nPl">
                                 <rect key="frame" x="240" y="266" width="120" height="23"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-lS-U3c">
+                                <rect key="frame" x="554" y="30" width="30" height="30"/>
+                                <state key="normal" image="pause_button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vh7-7a-HaO" kind="show" identifier="pauseSegue" id="fS9-l8-kKB"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4EF-KV-RRW">
+                                <rect key="frame" x="16" y="171" width="264" height="209"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4EF-KV-RRW" secondAttribute="height" multiplier="455:360" id="Hfg-fm-yTx"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -122,7 +122,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="gallowImage" destination="4EF-KV-RRW" id="5yp-8A-BBb"/>
+                        <outlet property="gallow" destination="4EF-KV-RRW" id="gLC-pI-3T6"/>
                         <outlet property="guessedLabel" destination="47s-ja-vYe" id="ZXm-X1-xRl"/>
                         <outlet property="inputLabel" destination="9WU-Gn-VAz" id="7Vd-Hc-qcs"/>
                         <outlet property="instructionArrow" destination="Nl0-uj-oCN" id="M2X-ZP-Kcb"/>
@@ -151,6 +151,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="kvN-bE-Ave">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4b-Vm-rQ2">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backgroundPressed:" destination="Vh7-7a-HaO" eventType="touchUpInside" id="A1X-Uu-vHA"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppr-0W-Jea">
                                 <rect key="frame" x="150" y="284" width="300" height="32"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="24"/>
@@ -201,11 +210,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Ppr-0W-Jea" secondAttribute="centerY" id="6RQ-Ho-VEb"/>
+                            <constraint firstItem="K4b-Vm-rQ2" firstAttribute="top" secondItem="zZQ-lD-BJa" secondAttribute="bottom" id="70T-TV-Uyq"/>
+                            <constraint firstItem="K4b-Vm-rQ2" firstAttribute="leading" secondItem="l29-z8-ejv" secondAttribute="leading" id="As7-7k-mZY"/>
+                            <constraint firstAttribute="trailing" secondItem="K4b-Vm-rQ2" secondAttribute="trailing" id="CjM-Pb-DhI"/>
                             <constraint firstItem="rHt-Cy-K9z" firstAttribute="width" secondItem="kvN-bE-Ave" secondAttribute="width" multiplier="1/2" id="Eha-uO-jry"/>
                             <constraint firstAttribute="centerX" secondItem="5gE-Fa-Jhu" secondAttribute="centerX" constant="-1" id="H4k-TX-F4C"/>
                             <constraint firstAttribute="centerX" secondItem="Ppr-0W-Jea" secondAttribute="centerX" id="MzO-F5-0n0"/>
                             <constraint firstItem="Ppr-0W-Jea" firstAttribute="width" secondItem="kvN-bE-Ave" secondAttribute="width" multiplier="1/2" id="Nj1-kO-We3"/>
                             <constraint firstItem="Ypp-9p-lfn" firstAttribute="top" secondItem="zZQ-lD-BJa" secondAttribute="bottom" constant="10" id="Q9Y-R0-5IV"/>
+                            <constraint firstItem="FwW-PA-VoY" firstAttribute="top" secondItem="K4b-Vm-rQ2" secondAttribute="bottom" id="S2U-04-Qrc"/>
                             <constraint firstItem="UaZ-xF-Olk" firstAttribute="top" secondItem="rHt-Cy-K9z" secondAttribute="bottom" constant="15" id="Vjy-OD-BX7"/>
                             <constraint firstAttribute="centerX" secondItem="Ypp-9p-lfn" secondAttribute="centerX" constant="-0.5" id="XZg-i7-fsy"/>
                             <constraint firstItem="FwW-PA-VoY" firstAttribute="top" secondItem="kvN-bE-Ave" secondAttribute="bottom" id="am2-eE-gYV"/>
@@ -397,9 +410,9 @@
         <image name="arrow" width="22" height="22"/>
         <image name="blackboard" width="849" height="565"/>
         <image name="button_bg" width="119" height="32"/>
-        <image name="pause_button" width="25" height="25"/>
+        <image name="pause_button" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cxx-9F-uks"/>
+        <segue reference="0Sa-B5-ecd"/>
     </inferredMetricsTieBreakers>
 </document>

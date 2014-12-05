@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HighScoreModel.h"
 
 @interface HighScoreViewController : UIViewController
 

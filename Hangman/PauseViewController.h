@@ -18,5 +18,6 @@
 
 - (IBAction)resumePressed:(id)sender;
 - (IBAction)newgamePressed:(id)sender;
+- (IBAction)backgroundPressed:(id)sender;
 
 @end

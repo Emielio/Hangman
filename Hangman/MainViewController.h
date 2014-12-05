@@ -10,6 +10,7 @@
 
 #import "HangmanBrain.h"
 #import "PauseViewController.h"
+#import "HighScoreModel.h"
 
 @interface MainViewController : UIViewController <UIAlertViewDelegate, UIKeyInput, PauseControllerDelegate>
 
@@ -19,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *inputLabel;
 @property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *instructionArrow;
-@property (weak, nonatomic) IBOutlet UIImageView *gallowImage;
+@property (weak, nonatomic) IBOutlet UIImageView *gallow;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 - (void)newGame;

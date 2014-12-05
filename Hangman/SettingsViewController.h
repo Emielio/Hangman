@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *wordsizeSlider;
 @property (weak, nonatomic) IBOutlet UILabel *wordsizeLabel;
 
-@property (weak, nonatomic) NSUserDefaults *settings;
+@property (weak, nonatomic) NSUserDefaults *defaults;
 
 - (IBAction)livesChanged:(id)sender;
 - (IBAction)wordsizeChanged:(id)sender;

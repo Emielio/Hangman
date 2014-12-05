@@ -16,7 +16,7 @@
 
 @synthesize livesSlider = _livesSlider;
 @synthesize livesLabel = _livesLabel;
-@synthesize settings = _settings;
+@synthesize defaults = _defaults;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,11 +26,11 @@
 
 }
 
-- (NSUserDefaults *)settings {
-    if (_settings == nil) {
-        _settings = [NSUserDefaults standardUserDefaults];
+- (NSUserDefaults *)defaults {
+    if (_defaults == nil) {
+        _defaults = [NSUserDefaults standardUserDefaults];
     }
-    return _settings;
+    return _defaults;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,34 +53,34 @@
 */
 
 - (void)updateSliders {
-    int lives = (int) [self.settings integerForKey:@"lives"];
-    int wordsize = (int) [self.settings integerForKey:@"wordsize"];
+    int lives = (int) [self.defaults integerForKey:@"lives"];
+    int wordsize = (int) [self.defaults integerForKey:@"wordsize"];
     self.livesSlider.value = lives;
     self.wordsizeSlider.value = wordsize;
 }
 
 - (void)updateLabels {
-    int lives = (int) [self.settings integerForKey:@"lives"];
+    int lives = (int) [self.defaults integerForKey:@"lives"];
     self.livesLabel.text = [NSString stringWithFormat:@"Lives: %i", lives];
     
-    int wordsize = (int) [self.settings integerForKey:@"wordsize"];
+    int wordsize = (int) [self.defaults integerForKey:@"wordsize"];
     self.wordsizeLabel.text = [NSString stringWithFormat:@"Wordsize: %i", wordsize];
 }
 
 - (IBAction)livesChanged:(id)sender {
     NSInteger x = self.livesSlider.value;
-    [self.settings setInteger:x forKey:@"lives"];
+    [self.defaults setInteger:x forKey:@"lives"];
     
-    [self.settings synchronize];
+    [self.defaults synchronize];
     
     [self updateLabels];
 }
 
 - (IBAction)wordsizeChanged:(id)sender {
     NSInteger x = self.wordsizeSlider.value;
-    [self.settings setInteger:x forKey:@"wordsize"];
+    [self.defaults setInteger:x forKey:@"wordsize"];
     
-    [self.settings synchronize];
+    [self.defaults synchronize];
     
     [self updateLabels];
 }

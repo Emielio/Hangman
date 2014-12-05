@@ -9,12 +9,22 @@
 #import "HighScoreViewController.h"
 
 @interface HighScoreViewController ()
-
+@property (retain, readwrite, nonatomic) HighScoreModel *highScoreModel;
 @end
 
 @implementation HighScoreViewController
+@synthesize highScoreModel = _highScoreModel;
+
 @synthesize highScoreLabel = _highScoreLabel;
 @synthesize highNameLabel = _highNameLabel;
+
+#pragma mark - Getters
+- (HighScoreModel *)highScoreModel {
+    if (_highScoreModel == nil) {
+        _highScoreModel = [[HighScoreModel alloc] init];
+    }
+    return _highScoreModel;
+}
 
 #pragma mark - UIViewController overrides
 - (void)viewDidLoad {
@@ -38,16 +48,16 @@
 #pragma mark - High Score core methods
 
 - (void)printHighScore:(NSArray *)highscore {
-    NSMutableString *scoreOutput = [NSMutableString string];
-    NSMutableString *nameOutput = [NSMutableString string];
+    NSMutableString *names = [NSMutableString string];
+    NSMutableString *scores = [NSMutableString string];
     
-    for (int i = 0; i < highscore.count; i++) {
-        [nameOutput appendFormat:@"%i.\t %@\n", i + 1, highscore[i][1]];
-        [scoreOutput appendFormat:@"%@\n", highscore[i][0]];
+    for (int i = 0; i < self.highScoreModel.names.count; i++) {
+        [names appendFormat:@"%i.\t %@\n", i + 1, self.highScoreModel.names[i]];
+        [scores appendFormat:@"%@\n", self.highScoreModel.scores[i]];
     }
     
-    self.highNameLabel.text = nameOutput;
-    self.highScoreLabel.text = scoreOutput;
+    self.highNameLabel.text = names;
+    self.highScoreLabel.text = scores;
 }
 
 #pragma mark - IBActions

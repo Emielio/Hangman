@@ -10,12 +10,12 @@
 
 @interface MainViewController ()
 @property (retain, readwrite, nonatomic) HangmanBrain *brain;
-@property (weak, readonly, nonatomic) NSUserDefaults *userDefaults;
+@property (weak, readonly, nonatomic) NSUserDefaults *defaults;
 @end
 
 @implementation MainViewController
 @synthesize brain = _brain;
-@synthesize userDefaults = _userDefaults;
+@synthesize defaults = _defaults;
 
 @synthesize guessedLabel = _guessedLabel;
 @synthesize wordLabel = _wordLabel;
@@ -23,7 +23,7 @@
 @synthesize inputLabel = _inputLabel;
 @synthesize instructionLabel = _instructionLabel;
 @synthesize instructionArrow = _instructionArrow;
-@synthesize gallowImage = _gallowImage;
+@synthesize gallow = _gallow;
 
 #pragma mark - Getters
 - (HangmanBrain *)brain {
@@ -31,21 +31,21 @@
      * HangmanBrain is instanciated when a new one is necessary.
      */
     if (_brain == nil) {
-        int lives = (int) [self.userDefaults integerForKey:@"lives"];
-        int wordsize = (int) [self.userDefaults integerForKey:@"wordsize"];
+        int lives = (int) [self.defaults integerForKey:@"lives"];
+        int wordsize = (int) [self.defaults integerForKey:@"wordsize"];
         _brain = [[HangmanBrain alloc] initWithLives:lives andWordsize:wordsize];
     }
     return _brain;
 }
 
-- (NSUserDefaults *)userDefaults {
+- (NSUserDefaults *)defaults {
     /*
      * Settings are retreived from standardUserDefaults when requested.
      */
-    if (_userDefaults == nil) {
-        _userDefaults = [NSUserDefaults standardUserDefaults];
+    if (_defaults == nil) {
+        _defaults = [NSUserDefaults standardUserDefaults];
     }
-    return _userDefaults;
+    return _defaults;
 }
 
 #pragma mark - UIViewController method overrides
@@ -91,36 +91,37 @@
      * User's input (a letter) is tested in
      * the hangmanbrain.
      */
-    
+    if (self.inputLabel.text.length != 1)
+        return;
+
+    // Hide the instruction label and image if not already hidden.
     if (self.instructionLabel.hidden == NO) {
-        // Animation which hides the instruction label and image.
+        
         [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{self.instructionLabel.alpha = 0; self.instructionArrow.alpha = 0;}
                          completion:^(BOOL finished){self.instructionLabel.hidden = YES; self.instructionArrow.hidden = YES;}];
     }
     
     NSString *letter = [self.inputLabel.text substringWithRange:NSMakeRange(0, 1)];
     
+    // Check if letter has already been guessed
     if ([self.brain.areLettersInWord objectForKey:letter] != nil)
     {
+        
         [self updateLabels];
         return;
     }
     
+    // Send the letter to the HangmanBrain.
     [self.brain guess:letter];
     
     [self updateGallow];
-    
     [self updateLabels];
     
     if ([self.brain won])
-    {
         [self eventAlertWon];
-    }
     
     if ([self.brain lost])
-    {
         [self eventAlertLost];
-    }
 }
 
 
@@ -194,7 +195,7 @@
 
 - (void)updateGallow {
     NSString *imageName = [NSString stringWithFormat:@"gallow%i.png", (int) (self.brain.progress * 13 + 0.5)];
-    self.gallowImage.image = [UIImage imageNamed:imageName];
+    self.gallow.image = [UIImage imageNamed:imageName];
 }
 
 - (void)clean
@@ -203,34 +204,7 @@
     self.brain = nil;
 }
 
-- (void)enterHighScore:(int)score withName: (NSString *)name {
-    if (name.length > 12) {
-        name = [name substringToIndex:12];
-    }
-    
-    
-    NSMutableArray *highScores = [[self.userDefaults objectForKey:@"highScoreList"] mutableCopy];
-    
-    NSArray *current = @[[NSNumber numberWithInt:score], name];
-    
-    for (int i = 0; i < highScores.count; i++) {
-        if ([current[0] integerValue] >= [highScores[i][0] integerValue]) {
-            [highScores insertObject:current atIndex:i];
-            break;
-        }
-    }
-    
-    NSArray *output;
-    if (highScores.count > 10) {
-        output = [highScores subarrayWithRange:NSMakeRange(0, 10)];
-    }
-    else {
-        output = highScores;
-    }
-    
-    [self.userDefaults setObject:output forKey:@"highScoreList"];
-    [self.userDefaults synchronize];
-}
+
 
 #pragma mark - PauseControllerDelegate Protocol implementation
 - (void)newGame {
@@ -242,7 +216,7 @@
 #pragma mark - UIAlertViewDelegate Protocol implementation
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        [self enterHighScore: self.brain.score withName:[alertView textFieldAtIndex:0].text];
+        [HighScoreModel enterHighScore: self.brain.score withName:[alertView textFieldAtIndex:0].text];
         
         [self performSegueWithIdentifier:@"highScoreSegue" sender:self];
     }
