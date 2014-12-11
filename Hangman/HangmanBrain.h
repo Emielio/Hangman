@@ -17,7 +17,7 @@
 @property (assign, readwrite, nonatomic) int lives;
 @property (assign, readonly, nonatomic) double progress;
 
-- (HangmanBrain *)initWithLives:(int)lives andWordsize:(int)wordsize;
+- (HangmanBrain *)initWithLives:(int)lives andWordsize:(int)wordsize isEvil:(BOOL)evil;
 
 - (void)guess:(NSString *)letter;
 

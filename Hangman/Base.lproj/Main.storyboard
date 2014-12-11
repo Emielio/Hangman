@@ -361,12 +361,33 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-AK-d8D">
+                                <rect key="frame" x="275" y="413" width="51" height="31"/>
+                                <color key="onTintColor" red="0.28754340280000001" green="0.28754340280000001" blue="0.28754340280000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="evilChanged:" destination="wUI-ow-uQg" eventType="valueChanged" id="fAh-kS-DzC"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evil Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKv-b5-Wf4">
+                                <rect key="frame" x="251" y="381" width="99" height="22"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Changes take effect in a New Game" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqd-jd-Kbu">
+                                <rect key="frame" x="166" y="132" width="271" height="17"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qzb-Yd-VCr" firstAttribute="top" secondItem="YLr-jh-Wbe" secondAttribute="bottom" constant="8" id="1x4-JB-Eet"/>
+                            <constraint firstItem="GKv-b5-Wf4" firstAttribute="top" secondItem="WwJ-iI-R90" secondAttribute="bottom" constant="30" id="2bA-08-7qn"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="leading" secondItem="MSa-Bo-gR9" secondAttribute="leading" id="859-XB-5L3"/>
                             <constraint firstItem="HYN-97-bLY" firstAttribute="width" secondItem="piW-wc-Edv" secondAttribute="width" multiplier="2/3" id="BTx-Zq-DXM"/>
+                            <constraint firstAttribute="centerX" secondItem="UcC-AK-d8D" secondAttribute="centerX" constant="0.5" id="CSa-jF-nD4"/>
                             <constraint firstItem="HYN-97-bLY" firstAttribute="top" secondItem="hlI-Hd-g4k" secondAttribute="bottom" constant="8" id="DsM-AQ-qKh"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="centerY" secondItem="Ja4-d7-Auz" secondAttribute="centerY" id="FZx-jr-LP1"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="centerX" secondItem="HYN-97-bLY" secondAttribute="centerX" id="HHh-eF-QfN"/>
@@ -378,12 +399,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="qzb-Yd-VCr" secondAttribute="trailing" id="VYs-BQ-OGk"/>
                             <constraint firstAttribute="centerX" secondItem="Ja4-d7-Auz" secondAttribute="centerX" constant="-0.5" id="XhJ-pr-iHZ"/>
                             <constraint firstItem="WwJ-iI-R90" firstAttribute="width" secondItem="piW-wc-Edv" secondAttribute="width" multiplier="2/3" id="goQ-bU-JA8"/>
+                            <constraint firstItem="UcC-AK-d8D" firstAttribute="top" secondItem="GKv-b5-Wf4" secondAttribute="bottom" constant="10" id="hh1-de-QSv"/>
+                            <constraint firstItem="hlI-Hd-g4k" firstAttribute="top" secondItem="oqd-jd-Kbu" secondAttribute="bottom" constant="50" id="hqt-FR-QVo"/>
                             <constraint firstItem="qzb-Yd-VCr" firstAttribute="top" secondItem="YLr-jh-Wbe" secondAttribute="bottom" id="ixS-mb-6kL"/>
+                            <constraint firstAttribute="centerX" secondItem="oqd-jd-Kbu" secondAttribute="centerX" constant="-1.5" id="nb3-S8-d0R"/>
                             <constraint firstItem="piW-wc-Edv" firstAttribute="bottom" secondItem="BVi-0C-hVn" secondAttribute="top" id="otg-Sp-GmK"/>
                             <constraint firstAttribute="centerY" secondItem="Ja4-d7-Auz" secondAttribute="centerY" id="qyr-mP-fJZ"/>
                             <constraint firstItem="Ja4-d7-Auz" firstAttribute="top" secondItem="HYN-97-bLY" secondAttribute="bottom" constant="30" id="uG9-rj-7aN"/>
                             <constraint firstItem="qzb-Yd-VCr" firstAttribute="top" secondItem="YLr-jh-Wbe" secondAttribute="bottom" id="wWX-Ke-xez"/>
                             <constraint firstItem="qzb-Yd-VCr" firstAttribute="trailing" secondItem="MSa-Bo-gR9" secondAttribute="trailingMargin" id="yLG-6C-O8B"/>
+                            <constraint firstAttribute="centerX" secondItem="GKv-b5-Wf4" secondAttribute="centerX" id="ybX-VD-z1w"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -395,6 +420,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="evilSwitch" destination="UcC-AK-d8D" id="cie-UB-awn"/>
                         <outlet property="livesLabel" destination="hlI-Hd-g4k" id="0hm-In-60v"/>
                         <outlet property="livesSlider" destination="HYN-97-bLY" id="E0X-pX-N6F"/>
                         <outlet property="wordsizeLabel" destination="Ja4-d7-Auz" id="AY9-NG-HEw"/>

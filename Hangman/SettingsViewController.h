@@ -14,11 +14,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *livesLabel;
 @property (weak, nonatomic) IBOutlet UISlider *wordsizeSlider;
 @property (weak, nonatomic) IBOutlet UILabel *wordsizeLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *evilSwitch;
 
 @property (weak, nonatomic) NSUserDefaults *defaults;
 
 - (IBAction)livesChanged:(id)sender;
 - (IBAction)wordsizeChanged:(id)sender;
+- (IBAction)evilChanged:(id)sender;
 - (IBAction)goBack:(id)sender;
 
 @end

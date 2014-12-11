@@ -33,7 +33,8 @@
     if (_brain == nil) {
         int lives = (int) [self.defaults integerForKey:@"lives"];
         int wordsize = (int) [self.defaults integerForKey:@"wordsize"];
-        _brain = [[HangmanBrain alloc] initWithLives:lives andWordsize:wordsize];
+        BOOL evil = [self.defaults boolForKey:@"evilMode"];
+        _brain = [[HangmanBrain alloc] initWithLives:lives andWordsize:wordsize isEvil:evil];
     }
     return _brain;
 }

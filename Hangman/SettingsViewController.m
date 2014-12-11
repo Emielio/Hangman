@@ -16,7 +16,9 @@
 
 @synthesize livesSlider = _livesSlider;
 @synthesize livesLabel = _livesLabel;
+@synthesize evilSwitch = _evilSwitch;
 @synthesize defaults = _defaults;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,8 +57,10 @@
 - (void)updateSliders {
     int lives = (int) [self.defaults integerForKey:@"lives"];
     int wordsize = (int) [self.defaults integerForKey:@"wordsize"];
+    BOOL evil = [self.defaults boolForKey:@"evilMode"];
     self.livesSlider.value = lives;
     self.wordsizeSlider.value = wordsize;
+    self.evilSwitch.on = evil;
 }
 
 - (void)updateLabels {
@@ -83,6 +87,11 @@
     [self.defaults synchronize];
     
     [self updateLabels];
+}
+
+- (IBAction)evilChanged:(id)sender {
+    BOOL x = self.evilSwitch.on;
+    [self.defaults setBool:x forKey:@"evilMode"];
 }
 
 
