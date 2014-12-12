@@ -5,6 +5,7 @@
 //  Created by Emiel on 11/7/14.
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
+//  Main brain which handles all game mechanics.
 
 #import "HangmanBrain.h"
 @interface HangmanBrain ()
@@ -27,21 +28,25 @@
 @synthesize dictionaryModel = _dictionaryModel;
 @synthesize possibleWords = _possibleWords;
 @synthesize wordsize = _wordsize;
+
 @synthesize initialLives = _initialLives;
 @synthesize evil = _evil;
+
+
+
 
 #pragma mark - init
 - (HangmanBrain *)initWithLives:(int)lives andWordsize:(int)wordsize isEvil:(BOOL)evil {
     /*
      * Initialize a HangmanBrain with an amount of lives, wordsize and score.
      */
+    self.wordsize = 9;
     self = [super init];
     self.wordsize = wordsize;
     self.lives = lives;
     self.initialLives = lives;
     self.evil = evil;
     self.score = 100 - lives;
-    
     [self.dictionaryModel loadDictionary];
     
     if (!evil) {
@@ -52,6 +57,9 @@
 }
 
 #pragma mark - Getters/Setters
+/*
+ * Returns a Model which can read the dictionary
+ */
 - (DictionaryModel *)dictionaryModel {
     if (_dictionaryModel == nil)
     {
@@ -72,7 +80,7 @@
             if (word.length == self.wordsize)
                 [storage addObject:word];
         }
-        
+
         if (storage.count < 200)
             self.score -= 10;
 
@@ -119,8 +127,14 @@
  * Guess whether a letter is in the secret word.
  */
 - (void)guess:(NSString *)letter {
-    NSMutableDictionary *containers = [NSMutableDictionary dictionary];
     
+    // Check if letter is guessed already.
+    if ([self.areLettersInWord objectForKey:letter] != nil) {
+        return;
+    }
+    
+    // Divide words in containers.
+    NSMutableDictionary *containers = [NSMutableDictionary dictionary];
     for (NSString *word in self.possibleWords)
     {
         NSString *key = [self hash:letter inString:word];
@@ -131,6 +145,7 @@
         [containers[key] addObject:word];
     }
     
+    // Find the largest container.
     NSArray *largestContainer;
     NSString *correspondingKey;
     for (NSString *key in containers) {
@@ -140,8 +155,10 @@
         }
     }
     
+    // possibleWords is reduced to the largest container (i.e. a subrange of itself).
     self.possibleWords = largestContainer;
     
+    // Update whether letter is a good or bad guess.
     if ([correspondingKey isEqualToString:@""]) {
         [self.areLettersInWord setObject:[NSNumber numberWithBool:NO] forKey:letter];
         self.lives--;
@@ -151,7 +168,7 @@
         [self.areLettersInWord setObject:[NSNumber numberWithBool:YES] forKey:letter];
     }
     
-    
+    // Update currentState with letters.
     NSArray *indices = [correspondingKey componentsSeparatedByString:@","];
     for (NSString *index in indices)
     {
@@ -162,11 +179,11 @@
     }
 }
 
+/*
+ * Returns a NSString with format "i_1,i_2,i_3," where i_n is
+ * an index at which the letter is in the string.
+ */
 - (NSString *)hash:(NSString *) letter inString:(NSString *)string {
-    /*
-     * Returns a NSString with format "i_1,i_2,i_3," where i_n is
-     * an index at which the letter is in the string.
-     */
     char c = [letter characterAtIndex:0];
     
     NSMutableString *locations = [NSMutableString string];
@@ -179,10 +196,10 @@
     return locations;
 }
 
+/*
+ * Check if the currentState is the secret word.
+ */
 - (BOOL)won {
-    /*
-     * Check if the currentState is the secret word.
-     */
     for (NSString *letter in self.currentState)
     {
         if ([letter isEqualToString:@""]) {
@@ -192,11 +209,11 @@
     return YES;
 }
 
+/*
+ * Check whether the lives are 0 (or less).
+ */
 - (BOOL)lost
 {
-    /*
-     * Check whether the lives are 0 (or less).
-     */
     if (self.lives <= 0)
     {
         return YES;
@@ -207,26 +224,35 @@
     }
 }
 
+/*
+ * Returns a random string from an array.
+ */
 - (NSString *)randomWordFromArray:(NSArray *)array {
     NSUInteger max = [array count];
     
-    return array[rand() % max];
+    return array[arc4random() % max];
 }
 
+/*
+ * Get the word if lost.
+ */
 - (NSString *)answer {
     return [self randomWordFromArray:self.possibleWords];
 }
 
+/*
+ * Limit memory usage by trashing the dictionaryModel.
+ */
 - (void)memoryWarning {
     [self.dictionaryModel clean];
     self.dictionaryModel = nil;
 }
 
+/*
+ * Detroys all objects
+ */
 - (void)clean
 {
-    /*
-     * Detroys all objects
-     */
     [self.dictionaryModel clean];
     self.dictionaryModel = nil;
     

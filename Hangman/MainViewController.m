@@ -5,6 +5,9 @@
 //  Created by Emiel on 11/6/14.
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
+//  Controls the Main View of the application. Handles user input
+//  and controls all other controllers.
+
 
 #import "MainViewController.h"
 
@@ -26,10 +29,11 @@
 @synthesize gallow = _gallow;
 
 #pragma mark - Getters
+/*
+ * HangmanBrain is instanciated when a new one is necessary, complete with lives,
+ * wordsize and evilmode option.
+ */
 - (HangmanBrain *)brain {
-    /*
-     * HangmanBrain is instanciated when a new one is necessary.
-     */
     if (_brain == nil) {
         int lives = (int) [self.defaults integerForKey:@"lives"];
         int wordsize = (int) [self.defaults integerForKey:@"wordsize"];
@@ -69,6 +73,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
+ * If viewcontroller segues to a PauseViewController, send self as delegate
+ */
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier  isEqualToString:@"pauseSegue"]) {
         PauseViewController *pauseViewController = segue.destinationViewController;
@@ -87,6 +94,11 @@
 
 
 #pragma mark - Game Handling
+/*
+ * This method is called when user input should be checked. After the information 
+ * has been sent to the HangmanBrain, the method makes sure labels and images are
+ * updated.
+ */
 - (void)checkUserInput {
     /*
      * User's input (a letter) is tested in
@@ -104,14 +116,6 @@
     
     NSString *letter = [self.inputLabel.text substringWithRange:NSMakeRange(0, 1)];
     
-    // Check if letter has already been guessed
-    if ([self.brain.areLettersInWord objectForKey:letter] != nil)
-    {
-        
-        [self updateLabels];
-        return;
-    }
-    
     // Send the letter to the HangmanBrain.
     [self.brain guess:letter];
     
@@ -125,7 +129,9 @@
         [self eventAlertLost];
 }
 
-
+/*
+ * Displays the lost alert.
+ */
 - (void)eventAlertLost {
     NSString *titleKey = @"alert_title_game_lost";
     NSString *messageKey = @"alert_message_game_lost";
@@ -138,7 +144,9 @@
     [alert show];
 }
 
-
+/*
+ * Displays the won alert.
+ */
 - (void)eventAlertWon {
     NSString *titleKey = @"alert_title_game_won";
     NSString *messageKey = @"alert_message_game_won";
@@ -157,6 +165,9 @@
     [alert show];
 }
 
+/*
+ * Updates all labels in the view.
+ */
 - (void)updateLabels {
     NSMutableString *wordLabelText = [NSMutableString string];
     
@@ -171,7 +182,6 @@
             [wordLabelText appendString:letter];
         }
     }
-    
     self.wordLabel.text = wordLabelText;
     
     NSMutableString *wrongLetters = [NSMutableString string];
@@ -182,7 +192,6 @@
             if ([self.brain.areLettersInWord[letter] boolValue] == NO)
                 [wrongLetters appendFormat:@"%c ", c];
     }
-    
     self.instructionLabel.text = NSLocalizedString(@"instruction_game_launch", nil);
     
     self.guessedLabel.text = wrongLetters;
@@ -193,7 +202,9 @@
 }
 
 
-
+/*
+ * Updates the gallow image, with the progress as a percentage from the HangmanBrain.
+ */
 - (void)updateGallow {
     NSString *imageName = [NSString stringWithFormat:@"gallow%i.png", (int) (self.brain.progress * 13 + 0.5)];
     self.gallow.image = [UIImage imageNamed:imageName];
@@ -205,8 +216,6 @@
     self.brain = nil;
 }
 
-
-
 #pragma mark - PauseControllerDelegate Protocol implementation
 - (void)newGame {
     [self clean];
@@ -215,6 +224,9 @@
 }
 
 #pragma mark - UIAlertViewDelegate Protocol implementation
+/*
+ * Method to segue to highscores when a high score is entered.
+ */
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [HighScoreModel enterHighScore: self.brain.score withName:[alertView textFieldAtIndex:0].text];
@@ -233,7 +245,6 @@
 
 
 #pragma mark - UIKeyInput Protocol implementation
-
 - (BOOL)hasText {
     if ([self.inputLabel.text isEqualToString:@""]) {
         return NO;

@@ -5,11 +5,12 @@
 //  Created by Emiel on 12/3/14.
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
+//  Appears when pause button in the MainViewController
+//  is pressed, functions as a menu for the app.
 
 #import "PauseViewController.h"
 
 @interface PauseViewController ()
-
 @end
 
 @implementation PauseViewController
@@ -29,20 +30,13 @@
     return YES;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)resumePressed:(id)sender {
     [self dismiss];
 }
 
+/*
+ * Start new game and dismiss when new game is pressed.
+ */
 - (IBAction)newgamePressed:(id)sender {
     [self.delegate newGame];
     [self dismiss];

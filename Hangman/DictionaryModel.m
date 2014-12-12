@@ -5,6 +5,7 @@
 //  Created by Emiel on 12/4/14.
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
+//  Model that reads dictionary.
 
 #import "DictionaryModel.h"
 

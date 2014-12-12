@@ -5,6 +5,7 @@
 //  Created by Emiel on 11/30/14.
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
+//  Manages the High Score View. Shows the current high scores.
 
 #import "HighScoreViewController.h"
 
@@ -46,7 +47,9 @@
 
 
 #pragma mark - High Score core methods
-
+/*
+ * Displays high scores in the labels
+ */
 - (void)printHighScore:(NSArray *)highscore {
     NSMutableString *names = [NSMutableString string];
     NSMutableString *scores = [NSMutableString string];
@@ -61,7 +64,6 @@
 }
 
 #pragma mark - IBActions
-
 - (IBAction)donePressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

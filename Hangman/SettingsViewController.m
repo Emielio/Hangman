@@ -5,6 +5,9 @@
 //  Created by Emiel on 11/17/14.
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
+//  Controls the Settings View. On load, sets slider, switch and label values to
+//  defaults. When values are manually changed, it sets defaults to those, values.
+
 
 #import "SettingsViewController.h"
 
@@ -22,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self updateSliders];
     [self updateLabels];
 
@@ -44,16 +46,10 @@
     return YES;
 }
 
+
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+ * Updates sliders with values from defaults.
+ */
 - (void)updateSliders {
     int lives = (int) [self.defaults integerForKey:@"lives"];
     int wordsize = (int) [self.defaults integerForKey:@"wordsize"];
@@ -63,6 +59,9 @@
     self.evilSwitch.on = evil;
 }
 
+/*
+ * Updates labels with values from defaults.
+ */
 - (void)updateLabels {
     int lives = (int) [self.defaults integerForKey:@"lives"];
     self.livesLabel.text = [NSString stringWithFormat:@"Lives: %i", lives];
@@ -71,6 +70,9 @@
     self.wordsizeLabel.text = [NSString stringWithFormat:@"Wordsize: %i", wordsize];
 }
 
+/*
+ * When the lives value changes, updates defaults and labels.
+ */
 - (IBAction)livesChanged:(id)sender {
     NSInteger x = self.livesSlider.value;
     [self.defaults setInteger:x forKey:@"lives"];
@@ -80,6 +82,9 @@
     [self updateLabels];
 }
 
+/*
+ * When the lives value changes, updates defaults and labels.
+ */
 - (IBAction)wordsizeChanged:(id)sender {
     NSInteger x = self.wordsizeSlider.value;
     [self.defaults setInteger:x forKey:@"wordsize"];
@@ -89,11 +94,13 @@
     [self updateLabels];
 }
 
+/*
+ * When the evil value changes, update labels.
+ */
 - (IBAction)evilChanged:(id)sender {
     BOOL x = self.evilSwitch.on;
     [self.defaults setBool:x forKey:@"evilMode"];
 }
-
 
 
 - (IBAction)goBack:(id)sender {

@@ -5,6 +5,7 @@
 //  Created by Emiel on 12/4/14.
 //  Copyright (c) 2014 mprog. All rights reserved.
 //
+//  Model that keeps track of highscores.
 
 #import "HighScoreModel.h"
 
@@ -28,7 +29,9 @@
 }
 
 
-
+/*
+ * Load highscore entries (score and name) at the same time.
+ */
 - (void)loadHighScores {
     NSArray *highscores = [[NSUserDefaults standardUserDefaults] objectForKey:@"highScoreList"];
     
@@ -44,6 +47,9 @@
     self.scores = scores;
 }
 
+/*
+ * Enter high score in defaults (if part of top 10).
+ */
 + (void)enterHighScore:(int)score withName: (NSString *)name {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -55,6 +61,8 @@
     
     NSArray *current = @[[NSNumber numberWithInt:score], name];
     
+    
+    // Loop through highscores and insert item if better.
     for (int i = 0; i < highScores.count; i++) {
         if ([current[0] integerValue] >= [highScores[i][0] integerValue]) {
             [highScores insertObject:current atIndex:i];
